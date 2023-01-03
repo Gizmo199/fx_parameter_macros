@@ -1,0 +1,1 @@
+fx_set("Effects", fx_windblown_trail_only, true);

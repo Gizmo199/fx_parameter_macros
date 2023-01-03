@@ -297,7 +297,7 @@ function fx_set(layer_name_or_fx_id, parameter){
 	}
 	
 	v = argument[2];
-	if ( !is_array(v) ){
+	if ( argument_count > 3 && !is_array(v) ){
 		var v = [];
 		var i = 2;
 		repeat(argument_count-2){

@@ -296,11 +296,14 @@ function fx_set(layer_name_or_fx_id, parameter){
 		fx = layer_get_fx(layer_name_or_fx_id);
 	}
 	
-	var v = [];
-	var i = 2;
-	repeat(argument_count-2){
-		array_push(v, argument[i]);
-		i++;
+	v = argument[2];
+	if ( !is_array(v) ){
+		var v = [];
+		var i = 2;
+		repeat(argument_count-2){
+			array_push(v, argument[i]);
+			i++;
+		}
 	}
 	fx_set_parameter(fx, parameter, v);
 }
@@ -310,4 +313,28 @@ function fx_get(layer_name_or_fx_id, parameter){
 		fx = layer_get_fx(layer_name_or_fx_id);
 	}
 	return fx_get_parameter(fx, parameter);
+}
+function color_get_rgb(color){
+	return [
+		color_get_red(color),
+		color_get_blue(color),
+		color_get_green(color)
+	];
+}
+function color_get_rgb_normalized(color){
+	return [
+		color_get_red(color)/255,
+		color_get_blue(color)/255,
+		color_get_green(color)/255
+	];
+}
+function color_get_rgba(color, alpha){
+	var a = color_get_rgb(color);
+	array_push(a, alpha);
+	return a;
+}
+function color_get_rgba_normalized(color, alpha){
+	var a = color_get_rgb_normalized(color);
+	array_push(a, alpha);
+	return a;
 }
